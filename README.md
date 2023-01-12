@@ -1,4 +1,4 @@
-# Captstone
+# Synthesizer Captstone
 ## UNCA Capstone Project Benjamin Knecht
 
 This is my Captstone project that I created my senior year at UNCA in 2022-2023.
