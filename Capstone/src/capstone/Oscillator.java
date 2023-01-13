@@ -2,12 +2,15 @@ package capstone;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.util.Hashtable;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
 import utils.RefWrapper;
 import utils.Utils;
 
@@ -25,6 +28,7 @@ public class Oscillator extends SynthControlContainer{
     private int wavetableIndex = 0;
     private RefWrapper<Integer> toneOffset = new RefWrapper<>(0);
     private RefWrapper<Integer> volume = new RefWrapper<>(100);
+    //private RefWrapper<Integer> panning = new RefWrapper<>(0);
     private boolean on_off = true;
     private int cycles = 3;
     
@@ -84,7 +88,7 @@ public class Oscillator extends SynthControlContainer{
         setSize(279,100);
         
         JButton reset = new JButton("Reset");
-        reset.setBounds(150, 10, 70 ,30);
+        reset.setBounds(10, 40, 80, 25);
         add(reset);
         reset.addActionListener((ActionEvent e) -> {
             setToneOffset(0);
@@ -96,8 +100,29 @@ public class Oscillator extends SynthControlContainer{
             synth.updateWaveviewer();
         });
         
+        //JLabel stereoLabel = new JLabel("Panning");
+        //stereoLabel.setBounds(150, 5, 70 ,30);
+        //add(stereoLabel);
+        
+        JSlider stereo = new JSlider(-1,1);
+        stereo.setBounds(157, 10, 120 ,30);
+        Hashtable<Integer,JComponent> label = stereo.createStandardLabels(1,-1);
+        JLabel left = new JLabel("L");
+        JLabel right = new JLabel("R");
+        JLabel both = new JLabel("");
+        label.replace(-1, left);
+        label.replace(1, right);
+        label.replace(0, both);
+        stereo.setLabelTable(label);
+        stereo.setPaintLabels(true);
+        stereo.setMajorTickSpacing(1);
+        stereo.setSnapToTicks(true);
+        stereo.addChangeListener((ChangeEvent l) -> {
+            AudioThread.setxVal(stereo.getValue()/1000f);
+        });
+        add(stereo);
         JButton randomize = new JButton("Randomize");
-        randomize.setBounds(35,60,100,30);
+        randomize.setBounds(10,70,100,25);
         add(randomize);
         randomize.addActionListener((ActionEvent e) -> {
             int randomWave = ThreadLocalRandom.current().nextInt(0, 3 + 1);
@@ -116,22 +141,23 @@ public class Oscillator extends SynthControlContainer{
                     break;
             }
             combobox.setSelectedIndex(randomWave);
-            int randomVol = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+            //int randomVol = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+            //volumeParameter.setText(" "+ randomVol+ "%");
+            //setVolumeMultiplier(randomVol);
             int randomToneOffset = ThreadLocalRandom.current().nextInt(-2000, 2000 + 1);
             setToneOffset(randomToneOffset);
             applyToneOffset();
-            volumeParameter.setText(" "+ randomVol+ "%");
-            setVolumeMultiplier(randomVol);
             toneParameter.setText("x"+randomToneOffset/1000.0);
             randomize.setFocusable(false);
             synth.updateWaveviewer();
         });
+
         /*JLabel color = new JLabel("Color");
         color.setBounds(10, 60, 70, 30);
         add(color);
         */
         JCheckBox on = new JCheckBox("On", on_off);
-        on.setBounds(220, 10, 50 ,30);
+        on.setBounds(100, 40, 50, 25);//220, 10, 50 ,30
         add(on);
         on.addActionListener((ActionEvent e) -> {
             on_off = on_off != true;
