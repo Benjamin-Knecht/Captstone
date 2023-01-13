@@ -2,6 +2,8 @@ package capstone;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -91,6 +93,37 @@ public class Oscillator extends SynthControlContainer{
             setVolumeMultiplier(100);
             toneParameter.setText("x0.00");
             reset.setFocusable(false);
+            synth.updateWaveviewer();
+        });
+        
+        JButton randomize = new JButton("Randomize");
+        randomize.setBounds(35,60,100,30);
+        add(randomize);
+        randomize.addActionListener((ActionEvent e) -> {
+            int randomWave = ThreadLocalRandom.current().nextInt(0, 3 + 1);
+            switch (randomWave) {
+                case 0:
+                    this.wavetable = wavetable.Sine;
+                    break;
+                case 1:
+                    this.wavetable = wavetable.Square;
+                    break;
+                case 2:
+                    this.wavetable = wavetable.Saw;
+                    break;
+                default:
+                    this.wavetable = wavetable.Triangle;
+                    break;
+            }
+            combobox.setSelectedIndex(randomWave);
+            int randomVol = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+            int randomToneOffset = ThreadLocalRandom.current().nextInt(-2000, 2000 + 1);
+            setToneOffset(randomToneOffset);
+            applyToneOffset();
+            volumeParameter.setText(" "+ randomVol+ "%");
+            setVolumeMultiplier(randomVol);
+            toneParameter.setText("x"+randomToneOffset/1000.0);
+            randomize.setFocusable(false);
             synth.updateWaveviewer();
         });
         /*JLabel color = new JLabel("Color");
