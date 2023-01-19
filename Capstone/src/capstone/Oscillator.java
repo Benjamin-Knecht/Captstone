@@ -28,9 +28,11 @@ public class Oscillator extends SynthControlContainer{
     private int wavetableIndex = 0;
     private RefWrapper<Integer> toneOffset = new RefWrapper<>(0);
     private RefWrapper<Integer> volume = new RefWrapper<>(100);
-    //private RefWrapper<Integer> panning = new RefWrapper<>(0);
     private boolean on_off = true;
     private int cycles = 3;
+    private boolean vol = false;
+    private boolean wave = true;
+    private boolean tone = true;
     
     /**
      * @description Empty constructor for Oscillator
@@ -88,7 +90,7 @@ public class Oscillator extends SynthControlContainer{
         setSize(279,100);
         
         JButton reset = new JButton("Reset");
-        reset.setBounds(10, 40, 80, 25);
+        reset.setBounds(150, 10, 70 ,30);//10, 40, 80, 25
         add(reset);
         reset.addActionListener((ActionEvent e) -> {
             setToneOffset(0);
@@ -103,7 +105,7 @@ public class Oscillator extends SynthControlContainer{
         //JLabel stereoLabel = new JLabel("Panning");
         //stereoLabel.setBounds(150, 5, 70 ,30);
         //add(stereoLabel);
-        
+        /*
         JSlider stereo = new JSlider(-1,1);
         stereo.setBounds(157, 10, 120 ,30);
         Hashtable<Integer,JComponent> label = stereo.createStandardLabels(1,-1);
@@ -121,43 +123,78 @@ public class Oscillator extends SynthControlContainer{
             AudioThread.setxVal(stereo.getValue()/1000f);
         });
         add(stereo);
-        JButton randomize = new JButton("Randomize");
-        randomize.setBounds(10,70,100,25);
+        stereo.setEnabled(false);
+        */
+        
+        JCheckBox wavecb = new JCheckBox("Wave");
+        wavecb.setBounds(5,70,57,25);
+        wavecb.setSelected(wave);
+        wavecb.addActionListener((ActionEvent e) -> {
+            wave = wave != true;
+        });
+        add(wavecb);
+        
+        JCheckBox tonecb = new JCheckBox("Tone");
+        tonecb.setBounds(58,70,57,25);
+        tonecb.setSelected(tone);
+        tonecb.addActionListener((ActionEvent e) -> {
+            tone = tone != true;
+        });
+        add(tonecb);
+        
+        JCheckBox volcb = new JCheckBox("Vol");
+        volcb.setBounds(112,70,50,25);
+        volcb.setSelected(vol);
+        volcb.addActionListener((ActionEvent e) -> {
+            vol = vol != true;
+        });
+        add(volcb);
+        
+        JButton randomize = new JButton("Randomize:");
+        randomize.setBounds(10,45,100,25);//10,70,100,25
         add(randomize);
         randomize.addActionListener((ActionEvent e) -> {
-            int randomWave = ThreadLocalRandom.current().nextInt(0, 3 + 1);
-            switch (randomWave) {
-                case 0:
-                    this.wavetable = wavetable.Sine;
-                    break;
-                case 1:
-                    this.wavetable = wavetable.Square;
-                    break;
-                case 2:
-                    this.wavetable = wavetable.Saw;
-                    break;
-                default:
-                    this.wavetable = wavetable.Triangle;
-                    break;
-            }
+            if (wave == true){
+                int randomWave = ThreadLocalRandom.current().nextInt(0, 3 + 1);
+                switch (randomWave) {
+                    case 0:
+                        this.wavetable = wavetable.Sine;
+                        break;
+                    case 1:
+                        this.wavetable = wavetable.Square;
+                        break;
+                    case 2:
+                        this.wavetable = wavetable.Saw;
+                        break;
+                    default:
+                        this.wavetable = wavetable.Triangle;
+                        break;
+                }
             combobox.setSelectedIndex(randomWave);
-            //int randomVol = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-            //volumeParameter.setText(" "+ randomVol+ "%");
-            //setVolumeMultiplier(randomVol);
-            int randomToneOffset = ThreadLocalRandom.current().nextInt(-2000, 2000 + 1);
-            setToneOffset(randomToneOffset);
-            applyToneOffset();
-            toneParameter.setText("x"+randomToneOffset/1000.0);
+            }
+            if (vol == true){
+                int randomVol = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+                volumeParameter.setText(" "+ randomVol+ "%");
+                setVolumeMultiplier(randomVol);
+            }
+            if (tone == true){
+                int randomToneOffset = ThreadLocalRandom.current().nextInt(-2000, 2000 + 1);
+                setToneOffset(randomToneOffset);
+                applyToneOffset();
+                toneParameter.setText("x"+randomToneOffset/1000.0);
+            }
             randomize.setFocusable(false);
             synth.updateWaveviewer();
         });
-
+        
+        
         /*JLabel color = new JLabel("Color");
         color.setBounds(10, 60, 70, 30);
         add(color);
         */
+        
         JCheckBox on = new JCheckBox("On", on_off);
-        on.setBounds(100, 40, 50, 25);//220, 10, 50 ,30
+        on.setBounds(220, 10, 50 ,30);// 100, 40, 50, 25
         add(on);
         on.addActionListener((ActionEvent e) -> {
             on_off = on_off != true;

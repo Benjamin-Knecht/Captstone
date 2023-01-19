@@ -68,6 +68,8 @@ public class Utils {
          * @param parameter RefWrapper<Integer> object
          * @param onChangeProcedure Procedure object
          */
+        
+        
         public static void addParameterMouseListener(Component component, SynthControlContainer container, int minVal, int maxVal, int valStep, RefWrapper<Integer> parameter, Procedure onChangeProcedure){
             component.addMouseListener(new MouseAdapter(){
                 @Override

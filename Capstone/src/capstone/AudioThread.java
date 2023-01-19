@@ -21,13 +21,14 @@ public class AudioThread extends Thread{
     private final long device = alcOpenDevice(alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER));
     private final long context = alcCreateContext(device, new int[1]);
     private final int source;
-    private final int source2;
-    private final int source3;
+    //private final int source2;
+    //private final int source3;
     //private final int sources;// = {(source), (source2), (source3)};
+    private static float xVal =0f;//x location of sound
+    
     private int bufferIndex;
     private boolean closed;
     private boolean running;
-    private static float xVal =0f;
     private static int index = 0;
     
     AudioThread(Supplier<short[]> bufferSupplier){
@@ -36,15 +37,16 @@ public class AudioThread extends Thread{
         alcMakeContextCurrent(context);
         AL.createCapabilities(ALC.createCapabilities(device));
         source = alGenSources();
-        source2 = alGenSources();
-        source3 = alGenSources();
+        //source2 = alGenSources();
+        //source3 = alGenSources();
         for (int i = 0; i < BUFFER_COUNT; i++){
             //buffer samples
             bufferSamples(new short[0]);
         }
         alSourcePlay(source);
-        alSourcePlay(source2);
-        alSourcePlay(source3);
+        //alSourcePlay(source2);
+        //alSourcePlay(source3);
+        
         //catch internal exceptions
         catchInternalException();
         start();
@@ -52,10 +54,7 @@ public class AudioThread extends Thread{
     public static void setxVal(float f){//add index param
         xVal = f;
     }
-    /*public static void setxValIndex(int i, float f){//add index param
-        index = i;
-        xVal = f;
-    }*/
+    
     boolean isRunning(){
         return running;
     }
@@ -86,7 +85,7 @@ public class AudioThread extends Thread{
             }
             catchInternalException();
     }
-    while (!closed){
+    /*while (!closed){
         while (!running){
                 Utils.handleProcedure(this::wait, false);
         }
@@ -98,7 +97,7 @@ public class AudioThread extends Thread{
                     running = false;
                     break;
                 }
-                alDeleteBuffers(alSourceUnqueueBuffers(source));
+                alDeleteBuffers(alSourceUnqueueBuffers(source2));
                 buffers[bufferIndex] = alGenBuffers();
                 bufferSamples(samples);
             }
@@ -119,7 +118,7 @@ public class AudioThread extends Thread{
                     running = false;
                     break;
                 }
-                alDeleteBuffers(alSourceUnqueueBuffers(source));
+                alDeleteBuffers(alSourceUnqueueBuffers(source3));
                 buffers[bufferIndex] = alGenBuffers();
                 bufferSamples(samples);
             }
@@ -128,9 +127,12 @@ public class AudioThread extends Thread{
             }
             catchInternalException();
         }
-        alDeleteSources(source);
+            
         alDeleteSources(source2);
         alDeleteSources(source3);
+        */
+    
+        alDeleteSources(source);
         alDeleteBuffers(buffers);
         alcDestroyContext(context);
         alcCloseDevice(device);
@@ -151,8 +153,8 @@ public class AudioThread extends Thread{
         int buf = buffers[bufferIndex++];
         alBufferData(buf,AL_FORMAT_MONO16, samples, Synthesizer.AudioInfo.SAMPLE_RATE);
         alSourceQueueBuffers(source,buf);
-        alSourceQueueBuffers(source2,buf);
-        alSourceQueueBuffers(source3,buf);
+    //   alSourceQueueBuffers(source2,buf);
+    //   alSourceQueueBuffers(source3,buf);
         bufferIndex %= BUFFER_COUNT;// 0 % 8 = 0 ... 8 % 8 = 0
     }
     
