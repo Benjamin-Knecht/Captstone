@@ -7,7 +7,9 @@ It is a thick application written in java using JSwing and the Lightweight Java 
 
 IN ORDER TO USE THE APPLICATION simply download the dist folder, and run the Capstone jar.
 
-YOU WILL NEED JDK INSTALLED ON YOUR COMPUTER IN ORDER TO RUN IT. (developed on JDK 14, so 14 or higher will work.)
+YOU WILL NEED JDK INSTALLED ON YOUR COMPUTER IN ORDER TO RUN IT: https://www.oracle.com/java/technologies/downloads/
+
+(developed on JDK 14, so 14 or higher will work.)
 
 ## Features
 Three different waveforms that can be changed into 4 presets: Sine, Square, Saw and Triangle.
