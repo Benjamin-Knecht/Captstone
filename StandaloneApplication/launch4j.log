@@ -1,0 +1,32 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\18286\Desktop\dist\Application\Capstone.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\18286\Desktop\dist\Application\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+JRE paths:	jre
+Check launcher:	C:\Users\18286\Desktop\dist\Application\jre\bin\javaw.exe (OK)
+Version string: 1.017.000_001 / 64-Bit (OK)
+Launcher:	C:\Users\18286\Desktop\dist\Application\jre\bin\javaw.exe
+Launcher args:	-jar "C:\Users\18286\Desktop\dist\Application\Capstone.exe"
+Args length:	59/32768 chars
+Exit code:	0
+
+
+Version:	3.50
+CmdLine:	C:\Users\18286\Desktop\dist\StandaloneApplication\Capstone.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\18286\Desktop\dist\StandaloneApplication\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+JRE paths:	dist\jre\bin\javaw.exe
+Check launcher:	C:\Users\18286\Desktop\dist\StandaloneApplication\dist\jre\bin\javaw.exe\bin\javaw.exe (not found)
+Error msg:	This application requires a Java Runtime Environment.
