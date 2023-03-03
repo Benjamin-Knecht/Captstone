@@ -6,7 +6,7 @@ This is my Captstone project that I created my senior year at UNCA in 2022-2023.
 It is a thick application written in java using JSwing and the Lightweight Java Library (lwjgl).
 
 ## How to use
-Download the project, unzip, and run the EXE located in the Standalone Folder.
+Download the project, unzip, and run the EXE located in the StandaloneApplication Folder.
 
 ## Features
 Three different waveforms that can be changed into 4 presets: Sine, Square, Saw and Triangle.
