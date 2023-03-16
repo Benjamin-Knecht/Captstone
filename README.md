@@ -9,7 +9,7 @@ It is a thick application written in java using JSwing and the Lightweight Java 
 Download the project, unzip, and in the Capstone/Dist folder run the Capstone jar.
 
 YOU WILL NEED JDK INSTALLED ON YOUR COMPUTER IN ORDER TO RUN IT: https://www.oracle.com/java/technologies/downloads/
-
+YOU NEED JDK, NOT JRE!!!
 (developed on JDK 14, so 14 or higher will work.)
 
 ## Features
