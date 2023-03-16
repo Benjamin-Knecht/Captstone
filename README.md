@@ -22,6 +22,3 @@ There are two oscillator visualizations of the waveforms, a combined one, and a 
 The main feature is the program's ability to record wav samples at all the different piano note frequencies, which can then be used in creation of Midi Instruments
 
 Notes are played by pressing keys on the keyboard.
-
-## In order to run the standalone application: (not currently working)
-Download the project, unzip, and run the EXE located in the StandaloneApplication Folder.
