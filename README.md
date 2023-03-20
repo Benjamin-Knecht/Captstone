@@ -10,6 +10,8 @@ Download the project, unzip, and in the Capstone/Dist folder run the Capstone ja
 
 YOU WILL NEED JDK INSTALLED ON YOUR COMPUTER IN ORDER TO RUN IT: https://www.oracle.com/java/technologies/downloads/
 
+YOU NEED JDK (java development kit), NOT JUST THE JRE (java runtime enviroment)
+
 (developed on JDK 14, so 14 or higher will work.)
 
 ## Features
@@ -22,6 +24,3 @@ There are two oscillator visualizations of the waveforms, a combined one, and a 
 The main feature is the program's ability to record wav samples at all the different piano note frequencies, which can then be used in creation of Midi Instruments
 
 Notes are played by pressing keys on the keyboard.
-
-## In order to run the standalone application: (not currently working)
-Download the project, unzip, and run the EXE located in the StandaloneApplication Folder.
