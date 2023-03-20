@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.*;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import utils.Utils;
 
 /**
@@ -303,7 +302,7 @@ public class Synthesizer {
         legend.setBounds(150, 150, 913 ,347);
         legend.setBorder(Utils.WindowDesign.LINE_BORDER);
         JLabel legendText = new JLabel("Pitch Legend");
-        
+
         String[][] array = {
             {"(+)Tone","(x)Freq Mult","(#)Half Steps"},
             {"0.000","1.000","0 (no change)"},
@@ -324,12 +323,13 @@ public class Synthesizer {
         TableColumn columnC = legendTable.getColumn("(x)Freq Mult");
         columnC.setMinWidth(0);
         columnC.setMaxWidth(67);
-
+        //legendTable.setModel(tableModel);
+        legendTable.setEnabled(false);
         legend.add(legendText);
         legend.add(legendTable);
         return legend;
     }
-    
+   
     private JPanel synthParams(){
         JPanel synthParams = new JPanel();
         synthParams.setBounds(150, 150, 913 ,347);
