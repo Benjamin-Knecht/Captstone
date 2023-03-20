@@ -64,12 +64,12 @@ public class Oscillator extends SynthControlContainer{
 
         add(combobox);
         
-        JLabel toneParameter = new JLabel("x0.00");
+        JLabel toneParameter = new JLabel("+0.00");
         toneParameter.setBounds(165,65,50,25);
         toneParameter.setBorder(Utils.WindowDesign.LINE_BORDER);
         Utils.ParameterHandling.addParameterMouseListener(toneParameter, this, -TONE_OFFSET_LIMIT, TONE_OFFSET_LIMIT, 1, toneOffset, () ->{
             applyToneOffset();
-            toneParameter.setText(" x" + String.format("%.3f", getToneOffset()));
+            toneParameter.setText(" +" + String.format("%.3f", getToneOffset()));
             synth.updateWaveviewer();
         });
         add(toneParameter);

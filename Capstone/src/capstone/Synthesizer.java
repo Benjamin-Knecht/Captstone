@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.*;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import utils.Utils;
 
 /**
@@ -150,8 +152,12 @@ public class Synthesizer {
         frame.add(waveViewerSeperated);
         frame.add(o);
         Component wavParams = synthParams();
-        wavParams.setBounds(895,0,200,310);
+        wavParams.setBounds(895,0,200,125);
+        //        wavParams.setBounds(895,0,200,310);
         frame.add(wavParams);
+        Component legend = legend();
+        legend.setBounds(895,130,200,180);
+        frame.add(legend);
         
         frame.add(piano);
         piano.repaint();
@@ -292,9 +298,42 @@ public class Synthesizer {
 	}
     }
     
+    private JPanel legend(){
+        JPanel legend = new JPanel();
+        legend.setBounds(150, 150, 913 ,347);
+        legend.setBorder(Utils.WindowDesign.LINE_BORDER);
+        JLabel legendText = new JLabel("Pitch Legend");
+        
+        String[][] array = {
+            {"(+)Tone","(x)Freq Mult","(#)Half Steps"},
+            {"0.000","1.000","0 (no change)"},
+            {"0.500","1.414","6 (tritone)"},
+            {"0.585","1.500","7 (fifth)"},
+            {"1.000","2.000","12 (octave)"},
+        };
+        String[] collumns = {"(+)Tone","(x)Freq Mult","(#)Half Steps"};
+        
+        JTable legendTable = new JTable(array,collumns);
+
+        legendTable.setAutoResizeMode( JTable.AUTO_RESIZE_ALL_COLUMNS );
+        
+        /**/TableColumn columnA = legendTable.getColumn("(+)Tone");
+        columnA.setMinWidth(0);
+        columnA.setMaxWidth(45);
+        
+        TableColumn columnC = legendTable.getColumn("(x)Freq Mult");
+        columnC.setMinWidth(0);
+        columnC.setMaxWidth(67);
+
+        legend.add(legendText);
+        legend.add(legendTable);
+        return legend;
+    }
+    
     private JPanel synthParams(){
         JPanel synthParams = new JPanel();
         synthParams.setBounds(150, 150, 913 ,347);
+        //synthParams.setBounds(150, 150, 913 ,347);
         synthParams.setBorder(Utils.WindowDesign.LINE_BORDER);
         JComboBox<Wavetable> combobox = new JComboBox<>(new Wavetable[] {Wavetable.Sine, Wavetable.Square, Wavetable.Saw, Wavetable.Triangle});
         combobox.setSelectedItem(Wavetable.Sine);
