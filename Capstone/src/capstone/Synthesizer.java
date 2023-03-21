@@ -151,11 +151,13 @@ public class Synthesizer {
         frame.add(waveViewerSeperated);
         frame.add(o);
         Component wavParams = synthParams();
-        wavParams.setBounds(895,0,200,125);
-        //        wavParams.setBounds(895,0,200,310);
+        wavParams.setBounds(895,0,200,65);
+        //wavParams.setBounds(895,0,200,125);      
+//        wavParams.setBounds(895,0,200,310);
         frame.add(wavParams);
         Component legend = legend();
-        legend.setBounds(895,130,200,180);
+        legend.setBounds(895,70,200,240);
+        //legend.setBounds(895,130,200,180);
         frame.add(legend);
         
         frame.add(piano);
@@ -305,9 +307,17 @@ public class Synthesizer {
 
         String[][] array = {
             {"(+)Tone","(x)Freq Mult","(#)Half Steps"},
-            {"0.000","1.000","0 (no change)"},
+            {"0.083","1.060","1 (semitone)"},
+            {"0.167","1.122","2 (whole)"},
+            {"0.250","1.189","3 (min third)"},
+            {"0.333","1.260","4 (maj third)"},
+            {"0.417","1.335","5 (fourth)"},
             {"0.500","1.414","6 (tritone)"},
-            {"0.585","1.500","7 (fifth)"},
+            {"0.583","1.500","7 (fifth)"},
+            {"0.667","1.587","8 (min sixth)"},
+            {"0.750","1.682","9 (maj sixth)"},
+            {"0.833","1.782","10 (min seventh)"},
+            {"0.917","1.888","11 (maj seventh)"},
             {"1.000","2.000","12 (octave)"},
         };
         String[] collumns = {"(+)Tone","(x)Freq Mult","(#)Half Steps"};
@@ -333,7 +343,6 @@ public class Synthesizer {
     private JPanel synthParams(){
         JPanel synthParams = new JPanel();
         synthParams.setBounds(150, 150, 913 ,347);
-        //synthParams.setBounds(150, 150, 913 ,347);
         synthParams.setBorder(Utils.WindowDesign.LINE_BORDER);
         JComboBox<Wavetable> combobox = new JComboBox<>(new Wavetable[] {Wavetable.Sine, Wavetable.Square, Wavetable.Saw, Wavetable.Triangle});
         combobox.setSelectedItem(Wavetable.Sine);
@@ -405,14 +414,14 @@ public class Synthesizer {
         
         duration.setBounds(165,65,953,367);
         durText.setBounds(135,65,953,367);
-        synthParams.add(sampleRateText, 0);
-        synthParams.add(sampleRate, 1);
-        synthParams.add(antialiasingText, 2);
-        synthParams.add(antialiasing, 3);
-        synthParams.add(cyclesText, 4);
-        synthParams.add(cycles, 5);
-        synthParams.add(durText, 6);
-        synthParams.add(duration, 7);
+        //synthParams.add(sampleRateText, 0);
+        //synthParams.add(sampleRate, 1);
+        //synthParams.add(antialiasingText, 2);
+        //synthParams.add(antialiasing, 3);
+        synthParams.add(cyclesText, 0);
+        synthParams.add(cycles, 1);
+        synthParams.add(durText, 2);
+        synthParams.add(duration, 3);
         return synthParams;
     }
 }
