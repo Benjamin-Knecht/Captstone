@@ -216,8 +216,23 @@ public class Synthesizer {
             String string = "";
             for (Oscillator o : oscillators){
                 String c = o.getWaveName();
-                //System.out.println(c);
-                string = string.concat(c);
+                if (null != c) //System.out.println(c);
+                switch (c) {
+                    case "Sine":
+                        string = string.concat(c);
+                        break;
+                    case "Saw":
+                        string = string.concat(c);
+                        break;
+                    case "Square":
+                        string = string.concat(c.substring(0,3));
+                        break;
+                    case "Triangle": 
+                        string = string.concat(c.substring(0,3));
+                        break;
+                    default:
+                        break;
+                }
             }
             saveWavSamples(string);
             s.setFocusable(false);
@@ -260,7 +275,7 @@ public class Synthesizer {
 
 			// Calculate the number of frames required for specified duration
 			long numFrames = (long)(duration * Synthesizer.AudioInfo.SAMPLE_RATE);
-
+                        
 			// Create a wav file with the name specified as the first argument
 			WavFile wavFile = WavFile.newWavFile(new File("samples/"+nametmp,name + it + "key" + (i + 36) +".wav"), 1, numFrames, 16, Synthesizer.AudioInfo.SAMPLE_RATE);
 
@@ -309,15 +324,15 @@ public class Synthesizer {
             {"(+)Tone","(x)Freq Mult","(#)Half Steps"},
             {"0.083","1.060","1 (semitone)"},
             {"0.167","1.122","2 (whole)"},
-            {"0.250","1.189","3 (min third)"},
-            {"0.333","1.260","4 (maj third)"},
+            {"0.250","1.189","3 (min. 3rd)"},
+            {"0.333","1.260","4 (maj. 3rd)"},
             {"0.417","1.335","5 (fourth)"},
             {"0.500","1.414","6 (tritone)"},
             {"0.583","1.500","7 (fifth)"},
-            {"0.667","1.587","8 (min sixth)"},
-            {"0.750","1.682","9 (maj sixth)"},
-            {"0.833","1.782","10 (min seventh)"},
-            {"0.917","1.888","11 (maj seventh)"},
+            {"0.667","1.587","8 (min. 6th)"},
+            {"0.750","1.682","9 (maj. 6th)"},
+            {"0.833","1.782","10 (min. 7th)"},
+            {"0.917","1.888","11 (maj. 7th)"},
             {"1.000","2.000","12 (octave)"},
         };
         String[] collumns = {"(+)Tone","(x)Freq Mult","(#)Half Steps"};
