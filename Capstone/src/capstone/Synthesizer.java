@@ -318,10 +318,10 @@ public class Synthesizer {
         JPanel legend = new JPanel();
         legend.setBounds(150, 150, 913 ,347);
         legend.setBorder(Utils.WindowDesign.LINE_BORDER);
-        JLabel legendText = new JLabel("Pitch Legend");
+        JLabel legendText = new JLabel("Tuning & Pitch Legend");
 
         String[][] array = {
-            {"(+)Tone","(x)Freq Mult","(#)Half Steps"},
+            {"(+)Tuning","(x)Freq Mult","(#)Half Steps"},
             {"0.083","1.060","1 (semitone)"},
             {"0.167","1.122","2 (whole)"},
             {"0.250","1.189","3 (min. 3rd)"},
@@ -335,15 +335,15 @@ public class Synthesizer {
             {"0.917","1.888","11 (maj. 7th)"},
             {"1.000","2.000","12 (octave)"},
         };
-        String[] collumns = {"(+)Tone","(x)Freq Mult","(#)Half Steps"};
+        String[] collumns = {"(+)Tuning","(x)Freq Mult","(#)Half Steps"};
         
         JTable legendTable = new JTable(array,collumns);
 
         legendTable.setAutoResizeMode( JTable.AUTO_RESIZE_ALL_COLUMNS );
         
-        /**/TableColumn columnA = legendTable.getColumn("(+)Tone");
+        /**/TableColumn columnA = legendTable.getColumn("(+)Tuning");
         columnA.setMinWidth(0);
-        columnA.setMaxWidth(45);
+        columnA.setMaxWidth(55);
         
         TableColumn columnC = legendTable.getColumn("(x)Freq Mult");
         columnC.setMinWidth(0);

@@ -73,7 +73,7 @@ public class Oscillator extends SynthControlContainer{
             synth.updateWaveviewer();
         });
         add(toneParameter);
-        JLabel toneText = new JLabel("Tone");
+        JLabel toneText = new JLabel("Tuning");
         toneText.setBounds(172,40,75,25);
         add(toneText);
         JLabel volumeParameter = new JLabel(" 100%");
@@ -97,7 +97,7 @@ public class Oscillator extends SynthControlContainer{
             applyToneOffset();
             volumeParameter.setText(" 100%");
             setVolumeMultiplier(100);
-            toneParameter.setText("x0.00");
+            toneParameter.setText("+0.00");
             reset.setFocusable(false);
             synth.updateWaveviewer();
         });
@@ -134,8 +134,8 @@ public class Oscillator extends SynthControlContainer{
         });
         add(wavecb);
         
-        JCheckBox tonecb = new JCheckBox("Tone");
-        tonecb.setBounds(58,70,57,25);
+        JCheckBox tonecb = new JCheckBox("Tuning");
+        tonecb.setBounds(58,70,66,25);
         tonecb.setSelected(tone);
         tonecb.addActionListener((ActionEvent e) -> {
             tone = tone != true;
@@ -143,7 +143,7 @@ public class Oscillator extends SynthControlContainer{
         add(tonecb);
         
         JCheckBox volcb = new JCheckBox("Vol");
-        volcb.setBounds(112,70,50,25);
+        volcb.setBounds(120,70,45,25);
         volcb.setSelected(vol);
         volcb.addActionListener((ActionEvent e) -> {
             vol = vol != true;
