@@ -1,6 +1,6 @@
 # Synthesizer Captstone
 ## UNCA Capstone Project Benjamin Knecht
-
+![alt text](https://github.com/Benjamin-Knecht/Synthesizer_Capstone/blob/main/Capstone/ApplicationScreenshot.png?raw=true)
 This is my Captstone project that I created my senior year at UNCA in 2022-2023.
 
 It is a thick application written in java using JSwing and the Lightweight Java Game Library (lwjgl).
