@@ -11,6 +11,7 @@ Download the project, unzip and:
 WINDOWS: just double click the jar like any other application
 
 MAC: run the following command in the terminal in the location of Capstone/Dist: 
+
 Java -jar Capstone.jar
 
 YOU WILL NEED JDK INSTALLED ON YOUR COMPUTER IN ORDER TO RUN IT: https://www.oracle.com/java/technologies/downloads/
