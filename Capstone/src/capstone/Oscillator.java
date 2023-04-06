@@ -55,7 +55,7 @@ public class Oscillator extends SynthControlContainer{
         super(synth);
         JComboBox<Wavetable> combobox = new JComboBox<>(new Wavetable[] {Wavetable.Sine, Wavetable.Square, Wavetable.Saw, Wavetable.Triangle});
         combobox.setSelectedItem(Wavetable.Sine);
-        combobox.setBounds(10,10,75,25);
+        combobox.setBounds(10,10,100,25);
         combobox.addItemListener(l->
         {
             if (l.getStateChange() == ItemEvent.SELECTED){

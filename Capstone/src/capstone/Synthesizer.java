@@ -366,21 +366,22 @@ public class Synthesizer {
         return legend;
     }
    
+    @SuppressWarnings("unchecked")
     private JPanel synthParams(){
         JPanel synthParams = new JPanel();
         synthParams.setBounds(150, 150, 913 ,347);
         synthParams.setBorder(Utils.WindowDesign.LINE_BORDER);
         JComboBox<Wavetable> combobox = new JComboBox<>(new Wavetable[] {Wavetable.Sine, Wavetable.Square, Wavetable.Saw, Wavetable.Triangle});
         combobox.setSelectedItem(Wavetable.Sine);
-        JLabel sampleRateText = new JLabel("Sample Rate: ");
+        //JLabel sampleRateText = new JLabel("Sample Rate: ");
         JComboBox sampleRate = new JComboBox();
-        JLabel antialiasingText = new JLabel("Antialiasing: ");
+        //JLabel antialiasingText = new JLabel("Antialiasing: ");
         JCheckBox antialiasing = new JCheckBox("On",true);
-        JLabel cyclesText = new JLabel("Number of Cycles: ");
+        JLabel cyclesText = new JLabel("Visual Cycles: ");
         JComboBox cycles = new JComboBox();
         JLabel durText = new JLabel("Duration: (s)");
         JComboBox duration = new JComboBox();
-        
+        /*
         sampleRate.addItem(8000);
         sampleRate.addItem(11025);
         sampleRate.addItem(22050);
@@ -410,7 +411,7 @@ public class Synthesizer {
             duration.setFocusable(false);
             cycles.setFocusable(false);
         });
-
+*/
         cycles.addItem(1);
         cycles.addItem(2);
         cycles.addItem(3);
