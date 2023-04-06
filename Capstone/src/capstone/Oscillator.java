@@ -1,5 +1,7 @@
 package capstone;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.util.Hashtable;
@@ -65,7 +67,7 @@ public class Oscillator extends SynthControlContainer{
         add(combobox);
         
         JLabel toneParameter = new JLabel("+0.00");
-        toneParameter.setBounds(165,65,50,25);
+        toneParameter.setBounds(170,65,55,25);
         toneParameter.setBorder(Utils.WindowDesign.LINE_BORDER);
         Utils.ParameterHandling.addParameterMouseListener(toneParameter, this, -TONE_OFFSET_LIMIT, TONE_OFFSET_LIMIT, 1, toneOffset, () ->{
             applyToneOffset();
@@ -77,7 +79,7 @@ public class Oscillator extends SynthControlContainer{
         toneText.setBounds(172,40,75,25);
         add(toneText);
         JLabel volumeParameter = new JLabel(" 100%");
-        volumeParameter.setBounds( 222,65,45,25);
+        volumeParameter.setBounds( 227,65,45,25);
         volumeParameter.setBorder(Utils.WindowDesign.LINE_BORDER);
         Utils.ParameterHandling.addParameterMouseListener(volumeParameter, this, 0, 100, 1, volume, () -> {
             volumeParameter.setText(" " + volume.val + "%");
@@ -90,7 +92,7 @@ public class Oscillator extends SynthControlContainer{
         setSize(279,100);
         
         JButton reset = new JButton("Reset");
-        reset.setBounds(150, 10, 70 ,30);//10, 40, 80, 25
+        reset.setBounds(140, 7, 80 ,30);//10, 40, 80, 25
         add(reset);
         reset.addActionListener((ActionEvent e) -> {
             setToneOffset(0);
@@ -127,7 +129,7 @@ public class Oscillator extends SynthControlContainer{
         */
         
         JCheckBox wavecb = new JCheckBox("Wave");
-        wavecb.setBounds(5,70,57,25);
+        wavecb.setBounds(5,70,67,25);
         wavecb.setSelected(wave);
         wavecb.addActionListener((ActionEvent e) -> {
             wave = wave != true;
@@ -135,7 +137,7 @@ public class Oscillator extends SynthControlContainer{
         add(wavecb);
         
         JCheckBox tonecb = new JCheckBox("Tuning");
-        tonecb.setBounds(58,70,66,25);
+        tonecb.setBounds(70,70,76,25);
         tonecb.setSelected(tone);
         tonecb.addActionListener((ActionEvent e) -> {
             tone = tone != true;
@@ -143,7 +145,7 @@ public class Oscillator extends SynthControlContainer{
         add(tonecb);
         
         JCheckBox volcb = new JCheckBox("Vol");
-        volcb.setBounds(120,70,45,25);
+        volcb.setBounds(115,45,50,25);
         volcb.setSelected(vol);
         volcb.addActionListener((ActionEvent e) -> {
             vol = vol != true;
@@ -151,7 +153,7 @@ public class Oscillator extends SynthControlContainer{
         add(volcb);
         
         JButton randomize = new JButton("Randomize:");
-        randomize.setBounds(10,45,100,25);//10,70,100,25
+        randomize.setBounds(5,45,110,25);//10,70,100,25
         add(randomize);
         randomize.addActionListener((ActionEvent e) -> {
             if (wave == true){
@@ -181,20 +183,16 @@ public class Oscillator extends SynthControlContainer{
                 int randomToneOffset = ThreadLocalRandom.current().nextInt(-2000, 2000 + 1);
                 setToneOffset(randomToneOffset);
                 applyToneOffset();
-                toneParameter.setText("x"+randomToneOffset/1000.0);
+                toneParameter.setText("+"+randomToneOffset/1000.0);
             }
             randomize.setFocusable(false);
             synth.updateWaveviewer();
         });
         
-        
-        /*JLabel color = new JLabel("Color");
-        color.setBounds(10, 60, 70, 30);
-        add(color);
-        */
+        super.repaint();
         
         JCheckBox on = new JCheckBox("On", on_off);
-        on.setBounds(220, 10, 50 ,30);// 100, 40, 50, 25
+        on.setBounds(225, 7, 50 ,30);// 100, 40, 50, 25
         add(on);
         on.addActionListener((ActionEvent e) -> {
             on_off = on_off != true;
@@ -205,6 +203,12 @@ public class Oscillator extends SynthControlContainer{
         setLayout(null);
     }
     
+    @Override
+    public void paintComponent(Graphics graphics){
+        super.paintComponent(graphics);
+        Graphics2D RandoBox = (Graphics2D)graphics;
+        RandoBox.drawRect(2,42,163,55);
+    }
     /**
      * @return the Boolean local variable for the specific oscillator of the "On" checkbox of the UI
      */

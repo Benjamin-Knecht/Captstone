@@ -152,12 +152,9 @@ public class Synthesizer {
         frame.add(o);
         Component wavParams = synthParams();
         wavParams.setBounds(895,0,200,65);
-        //wavParams.setBounds(895,0,200,125);      
-//        wavParams.setBounds(895,0,200,310);
         frame.add(wavParams);
         Component legend = legend();
         legend.setBounds(895,70,200,240);
-        //legend.setBounds(895,130,200,180);
         frame.add(legend);
         
         frame.add(piano);
@@ -367,7 +364,7 @@ public class Synthesizer {
         JCheckBox antialiasing = new JCheckBox("On",true);
         JLabel cyclesText = new JLabel("Number of Cycles: ");
         JComboBox cycles = new JComboBox();
-        JLabel durText = new JLabel("Duration: (seconds)");
+        JLabel durText = new JLabel("Duration: (s)");
         JComboBox duration = new JComboBox();
         
         sampleRate.addItem(8000);
