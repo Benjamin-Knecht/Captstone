@@ -145,15 +145,15 @@ public class Oscillator extends SynthControlContainer{
         add(tonecb);
         
         JCheckBox volcb = new JCheckBox("Vol");
-        volcb.setBounds(115,45,50,25);
+        volcb.setBounds(117,45,50,25);
         volcb.setSelected(vol);
         volcb.addActionListener((ActionEvent e) -> {
             vol = vol != true;
         });
         add(volcb);
         
-        JButton randomize = new JButton("Randomize:");
-        randomize.setBounds(5,45,110,25);//10,70,100,25
+        JButton randomize = new JButton("Randomize");
+        randomize.setBounds(5,45,112,25);//10,70,100,25
         add(randomize);
         randomize.addActionListener((ActionEvent e) -> {
             if (wave == true){
@@ -207,7 +207,7 @@ public class Oscillator extends SynthControlContainer{
     public void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
         Graphics2D RandoBox = (Graphics2D)graphics;
-        RandoBox.drawRect(2,42,163,55);
+        RandoBox.drawRect(2,42,165,55);
     }
     /**
      * @return the Boolean local variable for the specific oscillator of the "On" checkbox of the UI
