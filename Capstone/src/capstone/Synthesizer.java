@@ -316,8 +316,22 @@ public class Synthesizer {
         legend.setBounds(150, 150, 913 ,347);
         legend.setBorder(Utils.WindowDesign.LINE_BORDER);
         JLabel legendText = new JLabel("Tuning & Pitch Legend");
-
         String[][] array = {
+            {"(+)Tuning","(x)Freq Mult","(#)Notes"},
+            {"0.083","1.060","1 half"},
+            {"0.167","1.122","2 whole"},
+            {"0.250","1.189","3 min.3rd"},
+            {"0.333","1.260","4 maj.3rd"},
+            {"0.417","1.335","5 fourth"},
+            {"0.500","1.414","6 tritone"},
+            {"0.583","1.500","7 fifth"},
+            {"0.667","1.587","8 min.6th"},
+            {"0.750","1.682","9 maj.6th"},
+            {"0.833","1.782","10 min.7th"},
+            {"0.917","1.888","11 maj.7th"},
+            {"1.000","2.000","12 octave"},
+        };
+        /*String[][] array = {
             {"(+)Tuning","(x)Freq Mult","(#)Half Steps"},
             {"0.083","1.060","1 (semitone)"},
             {"0.167","1.122","2 (whole)"},
@@ -331,7 +345,7 @@ public class Synthesizer {
             {"0.833","1.782","10 (min. 7th)"},
             {"0.917","1.888","11 (maj. 7th)"},
             {"1.000","2.000","12 (octave)"},
-        };
+        };*/
         String[] collumns = {"(+)Tuning","(x)Freq Mult","(#)Half Steps"};
         
         JTable legendTable = new JTable(array,collumns);
