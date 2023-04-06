@@ -71,7 +71,7 @@ public class Oscillator extends SynthControlContainer{
         toneParameter.setBorder(Utils.WindowDesign.LINE_BORDER);
         Utils.ParameterHandling.addParameterMouseListener(toneParameter, this, -TONE_OFFSET_LIMIT, TONE_OFFSET_LIMIT, 1, toneOffset, () ->{
             applyToneOffset();
-            toneParameter.setText(" +" + String.format("%.3f", getToneOffset()));
+            toneParameter.setText("+" + String.format("%.3f", getToneOffset()));
             synth.updateWaveviewer();
         });
         add(toneParameter);
@@ -145,7 +145,7 @@ public class Oscillator extends SynthControlContainer{
         add(tonecb);
         
         JCheckBox volcb = new JCheckBox("Vol");
-        volcb.setBounds(117,45,50,25);
+        volcb.setBounds(120,45,47,25);
         volcb.setSelected(vol);
         volcb.addActionListener((ActionEvent e) -> {
             vol = vol != true;
@@ -153,7 +153,7 @@ public class Oscillator extends SynthControlContainer{
         add(volcb);
         
         JButton randomize = new JButton("Randomize");
-        randomize.setBounds(5,45,112,25);//10,70,100,25
+        randomize.setBounds(5,45,115,25);//10,70,100,25
         add(randomize);
         randomize.addActionListener((ActionEvent e) -> {
             if (wave == true){
