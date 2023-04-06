@@ -354,7 +354,7 @@ public class Synthesizer {
         
         /**/TableColumn columnA = legendTable.getColumn("(+)Tuning");
         columnA.setMinWidth(0);
-        columnA.setMaxWidth(55);
+        columnA.setMaxWidth(57);
         
         TableColumn columnC = legendTable.getColumn("(x)Freq Mult");
         columnC.setMinWidth(0);
