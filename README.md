@@ -19,6 +19,9 @@ WINDOWS: just double click the jar like any other application
 MAC and LINUX: run the following command in the terminal in the location of Capstone/Dist:  
 Java -jar Capstone.jar
 
+## Demo Video
+https://www.youtube.com/watch?v=RW62TFD8PaU 
+
 ## Features
 Three different waveforms that can be changed into 4 presets: Sine, Square, Saw and Triangle.
 
